@@ -1,0 +1,14 @@
+{
+  "name": "cours-2020",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error no tests\" && exit 12"
+  },
+  "dependencies": {
+    "brain.js": "^2.0.0-beta.1",
+    "fs-extra": "^9.0.0",
+    "ramda": "^0.27.0"
+  }
+}
