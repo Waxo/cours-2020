@@ -9,7 +9,7 @@ const trainNN = data => {
 
   const trainCfg = {
     iterations: 20000,
-    log: x => (!(x.iterations % 1000) ? console.log(x) : '')
+    log: x => (!(x.iterations % 2000) ? console.log(x) : '')
   };
 
   const net = new brain.CrossValidate(brain.NeuralNetwork, netCfg);
@@ -21,13 +21,13 @@ const prepareData = R.map(
   R.pipe(
     R.applySpec({
       input: {
-        passengerId: R.prop('passengerId'),
+        // passengerId: R.prop('passengerId'),
         pClass: R.prop('pClass'),
         sex: R.pipe(
           R.prop('sex'),
           R.ifElse(R.equals('male'), R.always(0), R.always(1))
         ),
-        // age: R.prop('age'),
+        age: R.pipe(R.prop('age'), R.when(R.equals(''), R.always(20))),
         sibSp: R.prop('sibSp'),
         parch: R.prop('parch'),
         fare: R.prop('fare')

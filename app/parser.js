@@ -29,7 +29,7 @@ const parseLine = R.pipe(
   })
 );
 
-const parseFile = R.pipe(R.split('\r\n'), R.tail, R.map(parseLine));
+const parseFile = R.pipe(R.split('\n'), R.tail, R.map(parseLine));
 const readAndParseFile = R.pipe(fileReader_, R.andThen(parseFile));
 
 const filterEmptyLines = R.filter(
