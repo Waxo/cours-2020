@@ -2,17 +2,19 @@ const brain = require('brain.js');
 const R = require('ramda');
 
 const trainNN = data => {
-  const cfg = {
-    binaryThresh: 0.5,
+  const netCfg = {
     hiddenLayers: [3],
     activation: 'sigmoid'
   };
 
-  const net = new brain.NeuralNetwork(cfg);
+  const trainCfg = {
+    iterations: 20000,
+    log: x => (!(x.iterations % 1000) ? console.log(x) : '')
+  };
 
-  net.train(data);
-  console.log(net.run([100, 2, 0, 1, 0, 26]));
-  console.log(net);
+  const net = new brain.CrossValidate(brain.NeuralNetwork, netCfg);
+
+  net.train(data, trainCfg);
 };
 
 const prepareData = R.map(

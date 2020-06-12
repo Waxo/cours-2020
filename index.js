@@ -13,7 +13,5 @@ R.pipeWith(R.andThen, [
   readAndParseFile,
   filterEmptyLines,
   prepareData,
-  R.tap(console.log),
-  trainNN,
-  R.tap(console.log)
+  trainNN
 ])('./titanic.csv');
