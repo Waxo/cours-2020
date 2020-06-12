@@ -1,10 +1,10 @@
 const R = require('ramda');
 const fs = require('fs-extra');
 
-const fileReader_ = x => fs.readFile(x, 'utf-8');
+const fileReader_ = (x) => fs.readFile(x, 'utf-8');
 
-const parseToSomeType_ = R.curry((type, n, arr) =>
-  R.pipe(R.nth(n), R.unless(R.isEmpty, type))(arr)
+const parseToSomeType_ = R.curry((type, n, array) =>
+  R.pipe(R.nth(n), R.unless(R.isEmpty, type))(array)
 );
 
 const parseToNumber_ = parseToSomeType_(Number);

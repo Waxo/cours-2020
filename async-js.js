@@ -14,7 +14,7 @@ const launchEmitter = () => {
 };
 
 /* BEGIN - A VIRER */
-marketEvent.on('New Offer', offer => console.log(offer));
+marketEvent.on('New Offer', (offer) => console.log(offer));
 launchEmitter();
 /* END - A VIRER */
 

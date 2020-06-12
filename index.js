@@ -1,12 +1,5 @@
 const R = require('ramda');
 const {filterEmptyLines, readAndParseFile} = require('./app/parser');
-const {
-  getMeanTicketPriceByClass,
-  getSurvivorByClass,
-  getMeanAgeByClass,
-  getMeanAgeBySex,
-  getSurvivorBySex
-} = require('./app/stats');
 const {prepareData, trainNN} = require('./app/nn');
 
 R.pipeWith(R.andThen, [

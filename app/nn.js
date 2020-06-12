@@ -1,7 +1,7 @@
 const brain = require('brain.js');
 const R = require('ramda');
 
-const trainNN = data => {
+const trainNN = (data) => {
   const netCfg = {
     hiddenLayers: [3],
     activation: 'sigmoid'
@@ -9,7 +9,7 @@ const trainNN = data => {
 
   const trainCfg = {
     iterations: 20000,
-    log: x => (!(x.iterations % 2000) ? console.log(x) : '')
+    log: (x) => (R.not(x.iterations % 2000) ? console.log(x) : '')
   };
 
   const net = new brain.CrossValidate(brain.NeuralNetwork, netCfg);
@@ -21,7 +21,7 @@ const prepareData = R.map(
   R.pipe(
     R.applySpec({
       input: {
-        // passengerId: R.prop('passengerId'),
+        // PassengerId: R.prop('passengerId'),
         pClass: R.prop('pClass'),
         sex: R.pipe(
           R.prop('sex'),
